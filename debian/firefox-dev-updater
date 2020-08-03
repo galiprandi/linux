@@ -34,3 +34,5 @@ chmod +x ./firefox-dev.desktop
 cp ./firefox-dev.desktop ~/.local/share/applications/
 
 sudo gtk-update-icon-cache
+
+echo -e "Terminado !"
