@@ -1,0 +1,36 @@
+#!/bin/sh
+
+clear
+
+cd /tmp/
+
+wget --max-redirect 3 "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=es-AR" -O firefox-dev.latest.tar.bz2
+
+tar -xvf firefox-dev.latest.tar.bz2
+
+NOW=`date +"%Y-%m-%d_%H-%M-%S"`
+
+sudo mv /opt/firefox-dev /tmp/firefox-backup-{$NOW}
+
+sudo mkdir /opt/firefox-dev
+
+sudo cp -R ./firefox/* /opt/firefox-dev
+
+cat > firefox-dev.desktop <<EOF
+[Desktop Entry]
+Name=Firefox Developer 
+GenericName=Firefox Developer Edition
+Exec=/opt/firefox-dev/firefox %u
+Terminal=false
+Icon=/opt/firefox-dev/browser/chrome/icons/default/default128.png
+Type=Application
+Categories=Application;Network;X-Developer;
+Comment=Firefox Developer Edition Web Browser.
+StartupWMClass=Firefox Developer Edition
+EOF
+
+chmod +x ./firefox-dev.desktop
+
+cp ./firefox-dev.desktop ~/.local/share/applications/
+
+sudo gtk-update-icon-cache
