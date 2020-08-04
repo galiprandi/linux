@@ -1,3 +1,3 @@
 # Debian script & Utilidades
 
-- firefox-dev-updater: Instala y actualiza Firefox Dev
+- **firefox-dev-updater**: Instala y actualiza Firefox Developer
