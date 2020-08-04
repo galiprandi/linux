@@ -1,6 +1,7 @@
 #!/bin/sh
-
 clear
+echo -e "Comenzando la instalación/actualización de Firefox Developer en /opt/firefox-dev"
+echo -e "Se creará una copia de la version existente de firefox en la carpeta /tmp/"
 
 cd /tmp/
 
