@@ -1,0 +1,11 @@
+#!/bin/sh
+clear
+echo -e "Comenzando la instalación/actualización de Visual Code y extensiones"
+
+cd /tmp/
+wget "https://go.microsoft.com/fwlink/?LinkID=760868" -O vscode-latest.deb
+sudo apt install /tmp/vscode-latest.deb
+code --install-extension CoenraadS.bracket-pair-colorizer-2
+code --install-extension PKief.material-icon-theme
+code --install-extension esbenp.prettier-vscode
+code --install-extension esbenp.prettier-vscode
