@@ -13,3 +13,6 @@ code --install-extension svelte.svelte-vscode-nightly
 code --install-extension fivethree.vscode-svelte-snippets
 code --install-extension ardenivanov.svelte-intellisense
 code --install-extension ritwickdey.LiveServer
+code --install-extension xabikos.JavaScriptSnippets
+code --install-extension yzhang.markdown-all-in-one
+
