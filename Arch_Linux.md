@@ -1,9 +1,10 @@
-# InstalarArch Linux en 15 horrendos pasos (sobre Gnome Boxes)
+# Instalar Arch Linux en 15 horrendos pasos (sobre Gnome Boxes)
 
 Basada en las guias:
 https://wiki.archlinux.org/index.php/Installation_guide_(Espa%C3%B1ol)
 
 ## 1 - Crear la máquina virtual y bootear con la ISO de Arch
+Descarga oficial: https://mirror.ufro.cl/archlinux/iso/2020.08.01/
 
 ## 2 - Configurar teclado en latam/es según corresponda
 
