@@ -2,7 +2,6 @@
 
 Basada en las guias:
 https://wiki.archlinux.org/index.php/Installation_guide_(Espa%C3%B1ol)
-https://denovatoanovato.net/instalar-arch-linux/#creando-unidad-de-arranque
 
 ## Crear la máquina virtual y bootear con la ISO de Arch
 
