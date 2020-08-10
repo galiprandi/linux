@@ -6,7 +6,7 @@ https://denovatoanovato.net/instalar-arch-linux/#creando-unidad-de-arranque
 
 ## Crear la máquina virtual y bootear con la ISO de Arch
 
-## Configurar teclado en la/es según corresponda
+## Configurar teclado en latam/es según corresponda
 
 ~~~
 loadkeys la-latin1
@@ -20,6 +20,8 @@ cfdisk
 
 Crear particiones: 
 
+- Tipo: dos
+
 - 512M Primary Boot
 
 - Espacio disponible Primary
@@ -27,6 +29,7 @@ Crear particiones:
 ## Formatear la partición /
 
 ~~~
+fdisk -l
 mkfs.ext2 /dev/vda1
 mkfs.ext4 /dev/vda2
 ~~~
@@ -46,10 +49,11 @@ ip link
 ping  google.com
 ~~~
 
-## Instalar sistema base y utilidades necesarias
+## Instalar sistema base y utilidades necesarias y crear fstab
 
 ~~~
 pacstrap /mnt base linux linux-firmware grub os-prober ntfs-3g networkmanager xdg-user-dirs nano dhcpcd intel-ucode
+genfstab -U /mnt >> /mnt/etc/fstab
 ~~~
 
 ## Entrar en la nueva instalación
@@ -73,13 +77,13 @@ locale-gen
 
 hwclock -w
 
-echo KEYMAP=la-latin1 > /etc/vconsole.conf
+echo KEYMAP=lalam > /etc/vconsole.conf
 ~~~
 
 ## Instalar Grub
 
 ~~~
-grub-install /dev/sda
+grub-install /dev/vda
 grub-mkconfig -o /boot/grub/grub.cfg
 ~~~
 
@@ -115,7 +119,7 @@ systemctl enable NetworkManager
 ## Instalar Gnome
 
 ~~~
-pacman -S gdm gnome gnome-extras gnome-shell
+pacman -S gdm gnome gnome-extras gnome-shell gnome-tweak-tool
 systemctl enable gdm
 reboot
 ~~~
