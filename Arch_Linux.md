@@ -9,7 +9,7 @@ https://denovatoanovato.net/instalar-arch-linux/#creando-unidad-de-arranque
 ## Configurar teclado en latam/es según corresponda
 
 ~~~
-loadkeys la-latin1
+loadkeys es
 ~~~
 
 ## Particionar el Disco
@@ -18,41 +18,33 @@ loadkeys la-latin1
 cfdisk
 ~~~
 
-Crear particiones: 
+#### dos -> New -> [ENTER] -> primary -> Bootable -> Write -> "yes" -> Quit
 
-- Tipo: dos
-
-- 512M Primary Boot
-
-- Espacio disponible Primary
 
 ## Formatear la partición /
 
 ~~~
 fdisk -l
-mkfs.ext2 /dev/vda1
-mkfs.ext4 /dev/vda2
+mkfs.ext4 /dev/vda1
 ~~~
 
 ## Montar la partición
 
 ~~~
-mount /dev/vda2 /mnt
-mkdir /mnt/boot
-mount /dev/vda1 /mnt/boot
+mount /dev/vda1 /mnt
 ~~~
 
 ## Chequear conexión a Internet
 
 ~~~
 ip link
-ping  google.com
+ping  google.com [CTRL+C]
 ~~~
 
 ## Instalar sistema base y utilidades necesarias y crear fstab
 
 ~~~
-pacstrap /mnt base linux linux-firmware grub os-prober ntfs-3g networkmanager xdg-user-dirs nano dhcpcd intel-ucode
+pacstrap /mnt base linux linux-firmware grub os-prober ntfs-3g networkmanager xdg-user-dirs nano dhcpcd
 genfstab -U /mnt >> /mnt/etc/fstab
 ~~~
 
@@ -62,22 +54,23 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 ~~~
 
-## Configuración requeridas
+## Varias configuraciones requeridas
 
 ~~~
 echo Arch > /etc/hostname
 
 ln -sf /usr/share/zoneinfo/America/Argentina /etc/localtime
 
-nano /etc/locale.gen # descomentar es_AR.UTF-8
+echo es_AR.UTF-8 UTF-8 >> /etc/locale.gen
 
 echo LANG=es_AR.UTF-8 > /etc/locale.conf
+
+echo KEYMAP=es > /etc/vconsole.conf
 
 locale-gen
 
 hwclock -w
 
-echo KEYMAP=lalam > /etc/vconsole.conf
 ~~~
 
 ## Instalar Grub
@@ -109,17 +102,18 @@ umount -R /mnt
 shutdown now
 ~~~
 
-## Luego del primer arranque existoso
+## Luego del primer arranque existoso ingresar como root
 
 ~~~
 systemctl start NetworkManager
 systemctl enable NetworkManager
+ping -c 3 google.com # Chequear que haya internet 
 ~~~
 
 ## Instalar Gnome
 
 ~~~
-pacman -S gdm gnome gnome-extras gnome-shell gnome-tweak-tool
+pacman -S gdm gnome gnome-tweak-tool
 systemctl enable gdm
 reboot
 ~~~
