@@ -44,7 +44,7 @@ ping  google.com [CTRL+C]
 ## 7 - Instalar sistema base y utilidades necesarias y crear fstab
 
 ~~~
-pacstrap /mnt base linux linux-firmware grub os-prober ntfs-3g networkmanager xdg-user-dirs nano dhcpcd
+pacstrap /mnt base linux linux-firmware grub ntfs-3g networkmanager xdg-user-dirs nano dhcpcd
 genfstab -U /mnt >> /mnt/etc/fstab
 ~~~
 
