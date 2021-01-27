@@ -1,0 +1,8 @@
+#!/bin/bash
+gio mount -u gphoto2://Canon_Inc._Canon_Digital_Camera/
+clear
+echo -e "Canon Shutter Count"
+echo -e "Remember umount and power on your devive"
+gphoto2 --auto-detect
+echo -e "----------------------------------------------------------"
+gphoto2 --get-config /main/status/shuttercounter | grep Current
